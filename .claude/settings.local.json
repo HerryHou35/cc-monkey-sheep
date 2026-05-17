@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item *)",
+      "PowerShell(Start-Sleep -Seconds 2; try { $response = Invoke-WebRequest -Uri \"http://localhost:5173\" -TimeoutSec 5 -UseBasicParsing; Write-Host \"Dev server is running - Status: $\\($response.StatusCode\\)\"; Write-Host \"Content length: $\\($response.Content.Length\\)\" } catch { Write-Host \"Server not ready yet: $_\" })",
+      "PowerShell(Get-ChildItem -Path \"D:\\\\AgentProjects\\\\cc\\\\games\" -Recurse -File | Where-Object { $_.FullName -notmatch 'node_modules|dist|\\\\.git' } | ForEach-Object { $_.FullName.Replace\\(\"D:\\\\AgentProjects\\\\cc\\\\games\\\\\", \"\"\\) })",
+      "PowerShell(Start-Sleep -Seconds 2; try { $response = Invoke-WebRequest -Uri \"http://localhost:5173\" -TimeoutSec 5 -UseBasicParsing; Write-Host \"Server running - Status: $\\($response.StatusCode\\)\" } catch { Write-Host \"Not ready: $_\" })",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://localhost:5173\" -TimeoutSec 5 -UseBasicParsing; Write-Host \"Server OK - $\\($r.StatusCode\\)\" } catch { Write-Host \"Waiting: $_\" })",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://localhost:5173\" -TimeoutSec 5 -UseBasicParsing; Write-Host \"OK - $\\($r.StatusCode\\)\" } catch { Write-Host \"Wait: $_\" })",
+      "PowerShell(Get-ChildItem -Path \"D:\\\\AgentProjects\\\\cc\\\\games\\\\public\\\\sounds\" -ErrorAction SilentlyContinue; if \\(-not \\(Test-Path \"D:\\\\AgentProjects\\\\cc\\\\games\\\\public\\\\sounds\"\\)\\) { Write-Host \"Directory does not exist\" })"
+    ]
+  }
+}
